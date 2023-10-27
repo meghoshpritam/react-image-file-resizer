@@ -2,18 +2,39 @@
   "env": {
     "browser": true,
     "es2021": true,
-    "node": true,
-    "jest": true
+    "node": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:jsx-a11y/recommended",
+    "airbnb",
     "plugin:prettier/recommended"
   ],
+  "plugins": [
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
   "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prop-types": "off",
+    "prettier/prettier": "error",
+    "import/no-named-as-default": 0,
+    "react/jsx-no-useless-fragment": 0,
+    "camelcase": "warn",
     "no-unused-vars": "warn",
-    "no-unused-expressions": "warn",
-    "no-unused-labels": "warn",
-    "jsx-a11y/anchor-is-valid": "warn"
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "import/no-extraneous-dependencies": "warn",
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
   }
 }

@@ -41,7 +41,14 @@ class Resizer {
     let { width } = image;
     let { height } = image;
 
-    const newHeightWidth = this.changeHeightWidth(height, maxHeight, width, maxWidth, minWidth, minHeight);
+    const newHeightWidth = this.changeHeightWidth(
+      height,
+      maxHeight,
+      width,
+      maxWidth,
+      minWidth,
+      minHeight,
+    );
     if (rotation && (rotation === 90 || rotation === 270)) {
       canvas.width = newHeightWidth.height;
       canvas.height = newHeightWidth.width;
@@ -82,7 +89,9 @@ class Resizer {
     contentType = contentType || 'image/jpeg';
     const sliceSize = 512;
 
-    const byteCharacters = atob(b64Data.toString().replace(/^data:image\/(png|jpeg|jpg|webp);base64,/, ''));
+    const byteCharacters = atob(
+      b64Data.toString().replace(/^data:image\/(png|jpeg|jpg|webp);base64,/, ''),
+    );
     const byteArrays = [];
 
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
@@ -157,7 +166,9 @@ class Resizer {
               }
               case 'file': {
                 const fileName = file.name;
-                const fileNameWithoutFormat = fileName.toString().replace(/(png|jpeg|jpg|webp)$/i, '');
+                const fileNameWithoutFormat = fileName
+                  .toString()
+                  .replace(/(png|jpeg|jpg|webp)$/i, '');
                 const newFileName = fileNameWithoutFormat.concat(compressFormat.toString());
                 const newFile = Resizer.b64toFile(resizedDataUrl, newFileName, contentType);
                 responseUriFunc(newFile);
