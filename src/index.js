@@ -222,11 +222,11 @@ export default {
     compressFormat,
     quality,
     rotation,
+    keepAspectRatio,
     responseUriFunc,
     outputType,
     minWidth,
     minHeight,
-    keepAspectRatio,
   ) =>
     Resizer.createResizedImage(
       file,
