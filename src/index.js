@@ -1,9 +1,5 @@
 /* eslint-disable no-param-reassign */
-/**
- *
- * @author Onur Zorluer
- *
- */
+
 class Resizer {
   static changeHeightWidth(height, maxHeight, width, maxWidth, minWidth, minHeight) {
     if (width > maxWidth) {
