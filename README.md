@@ -1,12 +1,10 @@
 # React Image File Resizer
 
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-[![Build Status](https://travis-ci.org/onurzorluer/react-image-file-resizer.svg?branch=master)](https://travis-ci.org/onurzorluer/react-image-file-resizer.svg?branch=master) [![npm version](https://badge.fury.io/js/react-image-file-resizer.svg)](https://badge.fury.io/js/react-image-file-resizer)
 
-`react-image-file-resizer` is a react module that can rescaled local images.
+`@meghoshpritam/react-image-file-resizer` is a react module that can rescaled local images.
 
 - You can change image's width, height, format, rotation and quality.
 - It returns resized image's new base64 URI or Blob. The URI can be used as the source of an `<Image>` component.
@@ -16,13 +14,19 @@
 Install the package:
 
 ```
-npm i react-image-file-resizer
+npm i @meghoshpritam/react-image-file-resizer
 ```
 
 or
 
 ```
-yarn add react-image-file-resizer
+yarn add @meghoshpritam/react-image-file-resizer
+```
+
+or
+
+```
+pnpm i @meghoshpritam/react-image-file-resizer
 ```
 
 ## Usage
@@ -41,6 +45,7 @@ Resizer.imageFileResizer(
   outputType, // Is the output type of the resized new image.
   minWidth, // Is the minWidth of the resized new image.
   minHeight // Is the minHeight of the resized new image.
+  keepAspectRatio // Is the keepAspectRatio of the resized new image.
 );
 ```
 
@@ -60,6 +65,7 @@ const resizeFile = (file) =>
       "JPEG",
       100,
       0,
+      true,
       (uri) => {
         resolve(uri);
       },
@@ -111,6 +117,7 @@ class App extends Component {
           "JPEG",
           100,
           0,
+          true,
           (uri) => {
             console.log(uri);
             this.setState({ newImage: uri });
@@ -150,41 +157,8 @@ export default App;
 | `outputType`      | Can be either **base64**, **blob** or **file**.(Default type is base64)                                                                                                | `string`   | No       |
 | `minWidth`        | New image min width (ratio is preserved, defaults to null)                                                                                                             | `number`   | No       |
 | `minHeight`       | New image min height (ratio is preserved, defaults to null)                                                                                                            | `number`   | No       |
-
+| `keepAspectRatio` | Keep aspect ratio of the image (defaults to true)                                                                                                                      | `boolean`  | Yes       |
 ## License
 
 [MIT](https://opensource.org/licenses/mit-license.html)
 
-## Contributors
-
-Thanks goes to these wonderful people ([emoji key](https://github.com/all-contributors/all-contributors#emoji-key)):
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center"><a href="https://github.com/AhmadMaleki"><img src="https://avatars2.githubusercontent.com/u/26637638?v=4?s=100" width="100px;" alt="Ahmad Maleki"/><br /><sub><b>Ahmad Maleki</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=AhmadMaleki" title="Code">💻</a> <a href="#maintenance-AhmadMaleki" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="http://www.vysnovsky.sk/"><img src="https://avatars1.githubusercontent.com/u/5657185?v=4?s=100" width="100px;" alt="Martin Vyšňovský"/><br /><sub><b>Martin Vyšňovský</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=martinvysnovsky" title="Code">💻</a> <a href="#maintenance-martinvysnovsky" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://github.com/nadunc"><img src="https://avatars2.githubusercontent.com/u/22863180?v=4?s=100" width="100px;" alt="Nadun Chamikara"/><br /><sub><b>Nadun Chamikara</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=nadunc" title="Code">💻</a> <a href="#maintenance-nadunc" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://shubhamzanwar.github.io/"><img src="https://avatars0.githubusercontent.com/u/15626155?v=4?s=100" width="100px;" alt="Shubham Zanwar"/><br /><sub><b>Shubham Zanwar</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=shubhamzanwar" title="Documentation">📖</a></td>
-      <td align="center"><a href="https://www.linkedin.com/in/onderonur/"><img src="https://avatars0.githubusercontent.com/u/50423574?v=4?s=100" width="100px;" alt="Onur Önder"/><br /><sub><b>Onur Önder</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=onderonur" title="Code">💻</a> <a href="#maintenance-onderonur" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://emreaybey.com/"><img src="https://avatars1.githubusercontent.com/u/45988990?v=4?s=100" width="100px;" alt="Yunus Emre"/><br /><sub><b>Yunus Emre</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=YemreAybey" title="Code">💻</a> <a href="#maintenance-YemreAybey" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://www.linkedin.com/in/velascojuan/"><img src="https://avatars.githubusercontent.com/u/4591845?v=4?s=100" width="100px;" alt="Juan"/><br /><sub><b>Juan</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=OverStruck" title="Code">💻</a> <a href="#maintenance-OverStruck" title="Maintenance">🚧</a></td>
-    </tr>
-    <tr>
-      <td align="center"><a href="https://www.facebook.com/sreang.rathanak"><img src="https://avatars.githubusercontent.com/u/12246079?v=4?s=100" width="100px;" alt="Sreang Rathanak"/><br /><sub><b>Sreang Rathanak</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=RathanakSreang" title="Code">💻</a> <a href="#maintenance-RathanakSreang" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://github.com/andresriveratoro"><img src="https://avatars.githubusercontent.com/u/36863582?v=4?s=100" width="100px;" alt="Andres Rivera"/><br /><sub><b>Andres Rivera</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=andresriveratoro" title="Code">💻</a> <a href="#maintenance-andresriveratoro" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://github.com/mmmulani"><img src="https://avatars.githubusercontent.com/u/192928?v=4?s=100" width="100px;" alt="mmmulani"/><br /><sub><b>mmmulani</b></sub></a><br /><a href="https://github.com/onurzorluer/react-image-file-resizer/commits?author=mmmulani" title="Code">💻</a> <a href="#maintenance-mmmulani" title="Maintenance">🚧</a></td>
-      <td align="center"><a href="https://github.com/Alex-1701"><img src="https://avatars.githubusercontent.com/u/55504833?v=4?s=100" width="100px;" alt="Alex-1701"/><br /><sub><b>Alex-1701</b></sub></a><br /><a href="#maintenance-Alex-1701" title="Maintenance">🚧</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
