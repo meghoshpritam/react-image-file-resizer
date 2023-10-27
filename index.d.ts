@@ -1,4 +1,4 @@
-declare module "react-image-file-resizer" {
+declare module 'react-image-file-resizer' {
   class Resizer {
     static changeHeightWidth(
       height: number,
@@ -6,7 +6,8 @@ declare module "react-image-file-resizer" {
       width: number,
       maxWidth: number,
       minWidth: number,
-      minHeight: number
+      minHeight: number,
+      keepAspectRatio: boolean,
     ): { height: number; width: number };
 
     static resizeAndRotateImage(
@@ -17,7 +18,8 @@ declare module "react-image-file-resizer" {
       minHeight: number,
       compressFormat?: string,
       quality?: number,
-      rotation?: number
+      rotation?: number,
+      keepAspectRatio?: boolean,
     ): string;
 
     static b64toBlob(b64Data: string, contentType: string): Blob;
@@ -30,16 +32,41 @@ declare module "react-image-file-resizer" {
       compressFormat: string,
       quality: number,
       rotation: number,
-      responseUriFunc: (
-        value: string | Blob | File | ProgressEvent<FileReader>
-      ) => void,
+      responseUriFunc: (value: string | Blob | File | ProgressEvent<FileReader>) => void,
       outputType?: string,
       minWidth?: number,
-      minHeight?: number
+      minHeight?: number,
+      keepAspectRatio?: boolean,
     ): void;
   }
 
-  const FileResizer: { imageFileResizer: typeof Resizer.createResizedImage };
+  type ImageFileResizer = ({
+    file,
+    maxWidth,
+    maxHeight,
+    compressFormat,
+    quality,
+    rotation,
+    responseUriFunc,
+    outputType,
+    minWidth,
+    minHeight,
+    keepAspectRatio,
+  }: {
+    file: Blob;
+    maxWidth: number;
+    maxHeight: number;
+    compressFormat: string;
+    quality: number;
+    rotation: number;
+    responseUriFunc: (value: string | Blob | File | ProgressEvent<FileReader>) => void;
+    outputType?: string;
+    minWidth?: number;
+    minHeight?: number;
+    keepAspectRatio?: boolean;
+  }) => void;
 
-  export default FileResizer;
+  export const imageFileResizer: ImageFileResizer;
+
+  export default Resizer;
 }

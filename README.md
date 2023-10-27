@@ -1,9 +1,5 @@
 # React Image File Resizer
 
-
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
-
-
 `@meghoshpritam/react-image-file-resizer` is a react module that can rescaled local images.
 
 - You can change image's width, height, format, rotation and quality.
@@ -13,19 +9,19 @@
 
 Install the package:
 
-```
+```shell
 npm i @meghoshpritam/react-image-file-resizer
 ```
 
 or
 
-```
+```shell
 yarn add @meghoshpritam/react-image-file-resizer
 ```
 
 or
 
-```
+```shell
 pnpm i @meghoshpritam/react-image-file-resizer
 ```
 
@@ -158,7 +154,7 @@ export default App;
 | `minWidth`        | New image min width (ratio is preserved, defaults to null)                                                                                                             | `number`   | No       |
 | `minHeight`       | New image min height (ratio is preserved, defaults to null)                                                                                                            | `number`   | No       |
 | `keepAspectRatio` | Keep aspect ratio of the image (defaults to true)                                                                                                                      | `boolean`  | Yes       |
+
 ## License
 
 [MIT](https://opensource.org/licenses/mit-license.html)
-
