@@ -215,7 +215,7 @@ class Resizer {
   }
 }
 export default {
-  imageFileResizer: (
+  imageFileResizer: ({
     file,
     maxWidth,
     maxHeight,
@@ -227,7 +227,7 @@ export default {
     outputType,
     minWidth,
     minHeight,
-  ) =>
+  }) =>
     Resizer.createResizedImage(
       file,
       maxWidth,

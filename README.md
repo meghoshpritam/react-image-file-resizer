@@ -34,7 +34,7 @@ pnpm i @meghoshpritam/react-image-file-resizer
 ```javascript
 import Resizer from "react-image-file-resizer";
 
-Resizer.imageFileResizer(
+Resizer.imageFileResizer({
   file, // Is the file of the image which will resized.
   maxWidth, // Is the maxWidth of the resized new image.
   maxHeight, // Is the maxHeight of the resized new image.
@@ -44,9 +44,9 @@ Resizer.imageFileResizer(
   responseUriFunc, // Is the callBack function of the resized new image URI.
   outputType, // Is the output type of the resized new image.
   minWidth, // Is the minWidth of the resized new image.
-  minHeight // Is the minHeight of the resized new image.
+  minHeight, // Is the minHeight of the resized new image.
   keepAspectRatio // Is the keepAspectRatio of the resized new image.
-);
+});
 ```
 
 ## Example 1
@@ -58,20 +58,20 @@ import Resizer from "react-image-file-resizer";
 
 const resizeFile = (file) =>
   new Promise((resolve) => {
-    Resizer.imageFileResizer(
+    Resizer.imageFileResizer({
       file,
-      300,
-      300,
-      "JPEG",
-      100,
-      0,
-      true,
-      (uri) => {
+      maxWidth: 300,
+      maxHeight: 300,
+      compressFormat: "JPEG",
+      quality: 100,
+      rotation: 0,
+      keepAspectRatio: true,
+      responseUriFunc: (uri) => {
         resolve(uri);
       },
-      "base64"
-    );
+      outputType: "base64"
   });
+});
 ```
 
 And then use it in your async function:
@@ -110,22 +110,22 @@ class App extends Component {
     }
     if (fileInput) {
       try {
-        Resizer.imageFileResizer(
-          event.target.files[0],
-          300,
-          300,
-          "JPEG",
-          100,
-          0,
-          true,
-          (uri) => {
+        Resizer.imageFileResizer({
+          file: event.target.files[0],
+          maxWidth: 300,
+          maxHeight: 300,
+          compressFormat: "JPEG",
+          quality: 100,
+          rotation: 0,
+          keepAspectRatio: true,
+          responseUriFunc: (uri) => {
             console.log(uri);
             this.setState({ newImage: uri });
           },
-          "base64",
-          200,
-          200
-        );
+          outputType: "base64",
+          minWidth: 200,
+          minHeight: 200
+      });
       } catch (err) {
         console.log(err);
       }
