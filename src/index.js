@@ -1,16 +1,7 @@
-/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-param-reassign */
 
 class Resizer {
-  static changeHeightWidth(
-    height,
-    maxHeight,
-    width,
-    maxWidth,
-    minWidth,
-    minHeight,
-    keepAspectRatio,
-  ) {
+  static changeHeightWidth(height, maxHeight, width, maxWidth, minWidth, minHeight, keepAspectRatio) {
     if (keepAspectRatio) {
       if (width > maxWidth) {
         height = Math.round((height * maxWidth) / width);
@@ -108,13 +99,10 @@ class Resizer {
     return canvas.toDataURL(`image/${compressFormat}`, qualityDecimal);
   }
 
-  static b64toByteArrays(b64Data, contentType) {
-    contentType = contentType || 'image/jpeg';
+  static b64toByteArrays(b64Data) {
     const sliceSize = 512;
 
-    const byteCharacters = atob(
-      b64Data.toString().replace(/^data:image\/(png|jpeg|jpg|webp);base64,/, ''),
-    );
+    const byteCharacters = atob(b64Data.toString().replace(/^data:image\/(png|jpeg|jpg|webp);base64,/, ''));
     const byteArrays = [];
 
     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
@@ -133,13 +121,13 @@ class Resizer {
   }
 
   static b64toBlob(b64Data, contentType) {
-    const byteArrays = this.b64toByteArrays(b64Data, contentType);
+    const byteArrays = this.b64toByteArrays(b64Data);
     const blob = new Blob(byteArrays, { type: contentType, lastModified: new Date() });
     return blob;
   }
 
   static b64toFile(b64Data, fileName, contentType) {
-    const byteArrays = this.b64toByteArrays(b64Data, contentType);
+    const byteArrays = this.b64toByteArrays(b64Data);
     const file = new File(byteArrays, fileName, { type: contentType, lastModified: new Date() });
     return file;
   }
@@ -191,9 +179,7 @@ class Resizer {
               }
               case 'file': {
                 const fileName = file.name;
-                const fileNameWithoutFormat = fileName
-                  .toString()
-                  .replace(/(png|jpeg|jpg|webp)$/i, '');
+                const fileNameWithoutFormat = fileName.toString().replace(/(png|jpeg|jpg|webp)$/i, '');
                 const newFileName = fileNameWithoutFormat.concat(compressFormat.toString());
                 const newFile = Resizer.b64toFile(resizedDataUrl, newFileName, contentType);
                 responseUriFunc(newFile);
