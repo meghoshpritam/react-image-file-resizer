@@ -1,23 +1,48 @@
+/* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-param-reassign */
 
 class Resizer {
-  static changeHeightWidth(height, maxHeight, width, maxWidth, minWidth, minHeight) {
-    if (width > maxWidth) {
-      height = Math.round((height * maxWidth) / width);
-      width = maxWidth;
+  static changeHeightWidth(
+    height,
+    maxHeight,
+    width,
+    maxWidth,
+    minWidth,
+    minHeight,
+    keepAspectRatio,
+  ) {
+    if (keepAspectRatio) {
+      if (width > maxWidth) {
+        height = Math.round((height * maxWidth) / width);
+        width = maxWidth;
+      }
+      if (height > maxHeight) {
+        width = Math.round((width * maxHeight) / height);
+        height = maxHeight;
+      }
+      if (minWidth && width < minWidth) {
+        height = Math.round((height * minWidth) / width);
+        width = minWidth;
+      }
+      if (minHeight && height < minHeight) {
+        width = Math.round((width * minHeight) / height);
+        height = minHeight;
+      }
+    } else {
+      if (width > maxWidth) {
+        width = maxWidth;
+      }
+      if (height > maxHeight) {
+        height = maxHeight;
+      }
+      if (minWidth && width < minWidth) {
+        width = minWidth;
+      }
+      if (minHeight && height < minHeight) {
+        height = minHeight;
+      }
     }
-    if (height > maxHeight) {
-      width = Math.round((width * maxHeight) / height);
-      height = maxHeight;
-    }
-    if (minWidth && width < minWidth) {
-      height = Math.round((height * minWidth) / width);
-      width = minWidth;
-    }
-    if (minHeight && height < minHeight) {
-      width = Math.round((width * minHeight) / height);
-      height = minHeight;
-    }
+
     return { height, width };
   }
 
@@ -30,6 +55,7 @@ class Resizer {
     compressFormat = 'jpeg',
     quality = 100,
     rotation = 0,
+    keepAspectRatio = true,
   ) {
     const qualityDecimal = quality / 100;
     const canvas = document.createElement('canvas');
@@ -44,6 +70,7 @@ class Resizer {
       maxWidth,
       minWidth,
       minHeight,
+      keepAspectRatio,
     );
     if (rotation && (rotation === 90 || rotation === 270)) {
       canvas.width = newHeightWidth.height;
@@ -94,7 +121,7 @@ class Resizer {
       const slice = byteCharacters.slice(offset, offset + sliceSize);
 
       const byteNumbers = new Array(slice.length);
-      for (let i = 0; i < slice.length; i++) {
+      for (let i = 0; i < slice.length; i += 1) {
         byteNumbers[i] = slice.charCodeAt(i);
       }
 
@@ -128,6 +155,7 @@ class Resizer {
     outputType = 'base64',
     minWidth = null,
     minHeight = null,
+    keepAspectRatio = true,
   ) {
     const reader = new FileReader();
     if (file) {
@@ -148,6 +176,7 @@ class Resizer {
               compressFormat,
               quality,
               rotation,
+              keepAspectRatio,
             );
             const contentType = `image/${compressFormat}`;
             switch (outputType) {
@@ -197,6 +226,7 @@ export default {
     outputType,
     minWidth,
     minHeight,
+    keepAspectRatio,
   ) =>
     Resizer.createResizedImage(
       file,
@@ -209,5 +239,6 @@ export default {
       outputType,
       minWidth,
       minHeight,
+      keepAspectRatio,
     ),
 };
