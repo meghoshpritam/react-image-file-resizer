@@ -149,21 +149,19 @@ Witness the Magic! 🔮
 
 ## Enchanting Options
 
-| Option           | Description                                                                                    | Type     | Required |
-| ---------------- | ---------------------------------------------------------------------------------------------- | -------- | -------- |
-| `file`           | Path of the image file                                                                         | `object` | Yes      |
-| `maxWidth`       | The new image's maximum width (aspect ratio is preserved)                                      | `number` | Yes      |
-| `maxHeight`      | The new image's maximum height (aspect ratio is preserved)                                     | `number` | Yes      |
-| `compressFormat` | The compression format for the image (JPEG, PNG, or WEBP)                                      | `string` | Yes      |
-| `quality`        | A number between 0 and 100, used for JPEG compression (set to 100 if no compression is needed) | `number` | Yes      |
-| `rotation`       | The degree of clockwise rotation to apply to the image (limited to multiples of 90 degrees)    | `number  |
-
-`   | Yes      |
-| `responseUriFunc` | The callback function for the URI of the resized image (e.g., `uri => {console.log(uri)}`)             | `function` | Yes      |
-| `outputType`      | The output type for the resized image (base64, blob, or file)                                           | `string`   | No       |
-| `minWidth`        | The new image's minimum width (aspect ratio is preserved, defaults to null)                            | `number`   | No       |
-| `minHeight`       | The new image's minimum height (aspect ratio is preserved, defaults to null)                           | `number`   | No       |
-| `keepAspectRatio` | Whether to maintain the aspect ratio of the image (defaults to true)                                    | `boolean`  | Yes      |
+| Option            | Description                                                                                    | Type       | Required |
+| ----------------- | ---------------------------------------------------------------------------------------------- | ---------- | -------- |
+| `file`            | Path of the image file                                                                         | `object`   | Yes      |
+| `maxWidth`        | The new image's maximum width (aspect ratio is preserved)                                      | `number`   | Yes      |
+| `maxHeight`       | The new image's maximum height (aspect ratio is preserved)                                     | `number`   | Yes      |
+| `compressFormat`  | The compression format for the image (JPEG, PNG, or WEBP)                                      | `string`   | Yes      |
+| `quality`         | A number between 0 and 100, used for JPEG compression (set to 100 if no compression is needed) | `number`   | Yes      |
+| `rotation`        | The degree of clockwise rotation to apply to the image (limited to multiples of 90 degrees)    | `number`   | Yes      |
+| `responseUriFunc` | The callback function for the URI of the resized image (e.g., `uri => {console.log(uri)}`)     | `function` | Yes      |
+| `outputType`      | The output type for the resized image (base64, blob, or file)                                  | `string`   | No       |
+| `minWidth`        | The new image's minimum width (aspect ratio is preserved, defaults to null)                    | `number`   | No       |
+| `minHeight`       | The new image's minimum height (aspect ratio is preserved, defaults to null)                   | `number`   | No       |
+| `keepAspectRatio` | Whether to maintain the aspect ratio of the image (defaults to true)                           | `boolean`  | Yes      |
 
 ## License
 
