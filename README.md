@@ -28,7 +28,7 @@ pnpm i @meghoshpritam/react-image-file-resizer
 ## Usage
 
 ```javascript
-import Resizer from "react-image-file-resizer";
+import Resizer from "@meghoshpritam/react-image-file-resizer";
 
 Resizer.imageFileResizer({
   file, // Is the file of the image which will resized.
@@ -50,7 +50,7 @@ Resizer.imageFileResizer({
 First, wrap the resizer:
 
 ```javascript
-import Resizer from "react-image-file-resizer";
+import Resizer from "@meghoshpritam/react-image-file-resizer";
 
 const resizeFile = (file) =>
   new Promise((resolve) => {
@@ -88,7 +88,7 @@ const onChange = async (event) => {
 
 ```javascript
 import React, { Component } from "react";
-import Resizer from "react-image-file-resizer";
+import Resizer from "@meghoshpritam/react-image-file-resizer";
 
 class App extends Component {
   constructor(props) {
