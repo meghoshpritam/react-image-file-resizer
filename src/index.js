@@ -74,6 +74,15 @@ class Resizer {
     width = newHeightWidth.width;
     height = newHeightWidth.height;
 
+    if (maxHeight) {
+      canvas.height = maxHeight;
+      height = maxHeight;
+    }
+    if (maxWidth) {
+      canvas.width = maxWidth;
+      width = maxWidth;
+    }
+
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = 'rgba(0, 0, 0, 0)';
     ctx.fillRect(0, 0, width, height);
@@ -94,6 +103,7 @@ class Resizer {
         ctx.translate(0, 0);
       }
     }
+
     ctx.drawImage(image, 0, 0, width, height);
 
     return canvas.toDataURL(`image/${compressFormat}`, qualityDecimal);
